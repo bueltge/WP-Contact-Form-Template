@@ -20,7 +20,7 @@ In your page template called “Contact” or whatever inlcude the form template
 
 	`https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php`
 
-	[twentyeleven/page-contact.php](https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php)
+	@see: [twentyeleven/page-contact.php](https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php)
 
 ## Settings
 You can only set the string for textdomain, that is translatable for the language files of the theme.
