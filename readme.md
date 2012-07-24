@@ -32,7 +32,7 @@ The string was set on start of the form template `contact-form.php`.
 
 ## Other Notes
 ### Contact & Feedback
-The plugin is designed and developed by me ([Frank Bültge](http://bueltge.de))
+This template is designed and developed by me ([Frank Bültge](http://bueltge.de))
 
 Please let me know if you like the plugin or you hate it or whatever ... Please fork it, add an issue for ideas and bugs.
 
