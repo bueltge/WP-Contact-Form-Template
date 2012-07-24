@@ -2,7 +2,7 @@
 
 A simple contact form template for use inside a theme in WordPress
 
-![Screenshot on my private blog](https://github.com/bueltge/WP-Contact-Form-Template/blob/master/screenshot-1.png "Usage on my private blog")
+![Screenshot on my private blog](https://github.com/bueltge/WP-Contact-Form-Template/raw/master/screenshot-1.png)
 
 ### Background
 Every plugin I found was easy to implement, but very often to much overload in WordPress ... Tables, Shortcodes, includes on all pages in frontend and much more. For an simple contact form was it easy to use a page template.
