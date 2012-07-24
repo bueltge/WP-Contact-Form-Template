@@ -16,6 +16,10 @@ In your page template called “Contact” or whatever inlcude the form template
 ## Example
 See the usage on my private site: [http://bueltge.de/kontakt/](http://bueltge.de/kontakt/)
 
+See also the page template inside this repo for WordPress TwentyTen template:
+	`https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php`
+[twentyeleven/page-contact.php](https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php)
+
 ## Settings
 You can only set the string for textdomain, that is translatable for the language files of the theme.
 The string was set on start of the form template `contact-form.php`.
