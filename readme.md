@@ -13,10 +13,11 @@ In your page template called “Contact” or whatever inlcude the form template
 
 	<?php get_template_part( 'contact', 'form' ); ?>
 
-## Example
-See the usage on my private site: [http://bueltge.de/kontakt/](http://bueltge.de/kontakt/)
+## Examples
+ * Live: See the usage on my private site: [http://bueltge.de/kontakt/](http://bueltge.de/kontakt/)
 
-See also the page template inside this repo for WordPress TwentyTen template:
+ * Code: See also the page template inside this repo for WordPress TwentyTen template:
+
 	`https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php`
 [twentyeleven/page-contact.php](https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php)
 
