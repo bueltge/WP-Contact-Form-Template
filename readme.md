@@ -3,12 +3,12 @@
 A simple contact form template for use inside a theme in WordPress
 
 ### Background
-Every plugin I found was easy to implement, but very often to much overload in WordPress ... Tables, Shortcodes, includes on all pages in frontend and os on. For an simple contact form was it easy to use a page template.
+Every plugin I found was easy to implement, but very often to much overload in WordPress ... Tables, Shortcodes, includes on all pages in frontend and much more. For an simple contact form was it easy to use a page template.
 
 ## Use page templats on pages
 Create a WordPress page called “Contact” or “Contact Me” or whatever. In the right sidebar you will see a drop-down list under “Page Template.” Choose this template “Contact.” At the top of the right sidebar, under “Discussion,” uncheck the box marked “Allow Pings.” Now save your work and you’re done.
 
-## Usage the form template
+## Use the form template
 In your page template called “Contact” or whatever inlcude the form template. Copy the template inside your theme.
 
 	<?php get_template_part( 'contact', 'form' ); ?>
