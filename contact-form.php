@@ -5,12 +5,22 @@
  * Use it in a template for pages in WordPress, include it easily via get_template_part( 'contact', 'form' );
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  07/24/2012
+ * @version  07/25/2012
+ * 
+ * 
+ * -----------------------------------------------------------------------------
+ * Settings
+ * -----------------------------------------------------------------------------
+ * 
+ * text domain string from theme for translation in theme language files
+ * or you use the language files inside the folder /contact-form-languages/
+ * and copy this folder include the files in your theme
  */
-
-// settings
-// text domain string from theme for translation in theme language files
-$text_domain_string = 'default';
+$text_domain_string = 'contact-form';
+/* Make the Contact Form Template available for translation.
+ * Translations can be added to the /contact-form-languages/ directory.
+ */
+load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact-form-languages' );
 
 // form processing if the input field has been set
 if ( isset( $_POST['submit'] ) ) {
@@ -87,7 +97,7 @@ if ( isset( $_POST['submit'] ) ) {
 		$email_to = get_option( 'admin_email' );
 		$subject  = __( 'Contact request from', $text_domain_string ) . ' ' . $from;
 		$body     = __( 'Name:', $text_domain_string ) . ' ' . $from . "\n" . 
-		            __( 'E-Mail:', $text_domain_string ) . ' ' . $email . "\n" . 
+		            __( 'E-mail:', $text_domain_string ) . ' ' . $email . "\n" . 
 		            __( 'IP:', $text_domain_string ) . ' ' . $ip_addr . "\n\n" . 
 		            __( 'Message:', $text_domain_string ) . ' ' . $message;
 		$headers  = 'From: ' . $from . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email;
@@ -123,7 +133,7 @@ if ( isset( $_POST['submit'] ) ) {
 			<label for="name">
 			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your Name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
+			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
 			<?php if ( isset( $from_error ) ) echo '<p class="alert">' . $from_error . '</p>'; ?>
 		</div>	
 		
