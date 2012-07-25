@@ -2,7 +2,7 @@
 /**
  * Simple contact form template for WordPress
  * 
- * Use it in a template for pages in WordPress, include it easy via get_template_part( 'contact', 'form' );
+ * Use it in a template for pages in WordPress, include it easily via get_template_part( 'contact', 'form' );
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
  * @version  07/24/2012
@@ -12,10 +12,10 @@
 // text domain string from theme for translation in theme language files
 $text_domain_string = 'default';
 
-// form processing, if the input field was set
+// form processing if the input field has been set
 if ( isset( $_POST['submit'] ) ) {
 	
-	// for debug output the form values
+	// output form values for debugging
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG )
 		var_dump($_POST);
 	
@@ -30,30 +30,30 @@ if ( isset( $_POST['submit'] ) ) {
 	
 	// check for spam input field
 	if ( ! empty( $spam ) ) {
-		$spam_error = __( 'Spamer? Das Spamschutzfeld muss leer sein.', $text_domain_string );
+		$spam_error = __( 'Spammer? The spam protection field needs to be empty.', $text_domain_string );
 		$has_error  = TRUE;
 	}
 	
 	// check sender name, string
 	if ( empty( $from ) ) {
-		$from_error = __( 'Bitte gib einen Namen ein.', $text_domain_string );
+		$from_error = __( 'Please enter your name.', $text_domain_string );
 		$has_error  = TRUE;
 	}
 	
 	// check for mail and filter the mail
 	if ( empty( $email ) ) {
-		$email_error = __( 'Bitte hinterlege deine E-Mail Adresse.', $text_domain_string );
+		$email_error = __( 'Please enter your e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
 	} else if ( ! preg_match(
 			"/^([a-z0-9äöü]+[-_\\.a-z0-9äöü]*)@[a-z0-9äöü]+([-_\.]?[a-z0-9äöü])+\.[a-z]{2,4}$/i",
 			$email
 		) ) {
-		$email_error = __( 'Bitte gib eine valide E-Mail Adresse an.', $text_domain_string );
+		$email_error = __( 'Please enter a valid e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
 	}
 	
 	if ( empty( $message ) ) {
-		$message_error = __( 'Bitte hinterlege eine Mitteilung.', $text_domain_string );
+		$message_error = __( 'Please enter a message.', $text_domain_string );
 		$has_error     = TRUE;
 	}
 	
@@ -85,11 +85,11 @@ if ( isset( $_POST['submit'] ) ) {
 		
 		
 		$email_to = get_option( 'admin_email' );
-		$subject  = __( 'Kontakt von', $text_domain_string ) . ' ' . $from;
+		$subject  = __( 'Contact request from', $text_domain_string ) . ' ' . $from;
 		$body     = __( 'Name:', $text_domain_string ) . ' ' . $from . "\n" . 
 		            __( 'E-Mail:', $text_domain_string ) . ' ' . $email . "\n" . 
 		            __( 'IP:', $text_domain_string ) . ' ' . $ip_addr . "\n\n" . 
-		            __( 'Mitteilung:', $text_domain_string ) . ' ' . $message;
+		            __( 'Message:', $text_domain_string ) . ' ' . $message;
 		$headers  = 'From: ' . $from . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email;
 		
 		// send mail via wp mail function
@@ -98,7 +98,7 @@ if ( isset( $_POST['submit'] ) ) {
 		if ( $cc ) {
 			wp_mail(
 				$email,
-				__( 'In CC zu', $text_domain_string ) . ' ' . $subject,
+				__( 'CC:', $text_domain_string ) . ' ' . $subject,
 				$body,
 				$headers
 			);
@@ -116,20 +116,20 @@ if ( isset( $_POST['submit'] ) ) {
 		
 		<?php
 		if ( isset( $spam_error ) ) echo '<p class="alert">' . $spam_error . '</p>';
-		if ( isset( $email_sent ) ) echo '<p class="alert">' . __( 'Vielen Dank für deine Mitteilung.', $text_domain_string ) . '</p>';
+		if ( isset( $email_sent ) ) echo '<p class="alert">' . __( 'Thank you for leaving a message.', $text_domain_string ) . '</p>';
 		?>
 		
 		<div class="field">
 			<label for="name">
-			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*Pflichtfeld', $text_domain_string ); ?></small>
+			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" id="from" name="from" placeholder="<?php _e( 'Dein Name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
+			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your Name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
 			<?php if ( isset( $from_error ) ) echo '<p class="alert">' . $from_error . '</p>'; ?>
 		</div>	
 		
 		<div class="field">
 			<label for="email">
-				<?php _e( 'E-Mail Adresse', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*Pflichtfeld', $text_domain_string ); ?></small>
+				<?php _e( 'E-mail address', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
 			<input type="text" placeholder="<?php _e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) ) echo $email; ?>" />
 			<?php if ( isset( $email_error ) ) echo '<p class="alert">' . $email_error . '</p>'; ?>
@@ -137,27 +137,27 @@ if ( isset( $_POST['submit'] ) ) {
 		
 		<div class="field">
 			<label for="text">
-				<?php _e( 'Mitteilung', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*Pflichtfeld', $text_domain_string ); ?></small>
+				<?php _e( 'Message', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<textarea id="text" name="text" placeholder="<?php _e( 'Deine Mitteilung &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) ) echo $message; ?></textarea>
+			<textarea id="text" name="text" placeholder="<?php _e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) ) echo $message; ?></textarea>
 			<?php if ( isset( $message_error ) ) echo '<p class="alert">' . $message_error . '</p>'; ?>
 		</div>
 		
 		<div class="field">
 			<input type="checkbox" id="cc" name="cc" value="1" <?php if ( isset( $cc ) ) checked('1', $cc ); ?> />
 			<label for="cc" style="display: inline;">
-				<?php _e( 'Kopie erhalten?', $text_domain_string ); ?>
+				<?php _e( 'Receive a copy of this message?', $text_domain_string ); ?>
 			</label>
 		</div>
 		
 		<div class="field" style="display: none !important;">
 			<label for="text">
-				<?php _e( 'Spamschutzfeld', $text_domain_string ); ?>
+				<?php _e( 'Spam protection', $text_domain_string ); ?>
 			</label>
 			<input name="spamcheck" class="spamcheck" type="text" />
 		</div>
 		
-		<input class="submit" type="submit" name="submit" value="<?php _e( 'E-Mail versenden &rarr;', $text_domain_string ); ?>" />
+		<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
 	
 	</fieldset>
 </form>
