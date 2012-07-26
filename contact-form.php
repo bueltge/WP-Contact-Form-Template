@@ -93,7 +93,7 @@ if ( isset( $_POST['submit'] ) ) {
 		}
 		$ip_addr = filter_var( $ip_addr, FILTER_VALIDATE_IP );
 		
-		
+		// use mail adress from WP Admin
 		$email_to = get_option( 'admin_email' );
 		$subject  = __( 'Contact request from', $text_domain_string ) . ' ' . $from;
 		$body     = __( 'Name:', $text_domain_string ) . ' ' . $from . "\n" . 
