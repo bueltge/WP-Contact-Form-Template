@@ -100,7 +100,9 @@ if ( isset( $_POST['submit'] ) ) {
 		            __( 'E-mail:', $text_domain_string ) . ' ' . $email . "\n" . 
 		            __( 'IP:', $text_domain_string ) . ' ' . $ip_addr . "\n\n" . 
 		            __( 'Message:', $text_domain_string ) . ' ' . $message;
-		$headers  = 'From: ' . $from . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email;
+		$headers  = 'From: ' . $from . ' <' . $email . '>' . "\r\n";
+		if ( $cc ) // check for cc and include sender mail to reply
+			$headers .= 'Reply-To: ' . $email;
 		
 		// send mail via wp mail function
 		wp_mail( $email_to, $subject, $body, $headers );
