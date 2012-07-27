@@ -2,19 +2,21 @@
 /**
  * Simple contact form template for WordPress
  * 
- * Use it in a template for pages in WordPress, include it easily via get_template_part( 'contact', 'form' );
+ * Use it in a template for pages in WordPress, 
+ *   include it easily via get_template_part( 'contact', 'form' );
+ * See the action and filter hooks for include or change output for your requirements
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  07/25/2012
+ * @version  07/27/2012
  * 
  * 
  * -----------------------------------------------------------------------------
  * Settings
  * -----------------------------------------------------------------------------
  * 
- * text domain string from theme for translation in theme language files
- * or you use the language files inside the folder /contact-form-languages/
- * and copy this folder include the files in your theme
+ * Text domain string from theme for translation in theme language files
+ *   or you use the language files inside the folder /contact-form-languages/
+ *   and copy this folder include the files in your theme
  */
 $text_domain_string = 'contact-form';
 /* Make the Contact Form Template available for translation.
@@ -24,6 +26,9 @@ load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact
 
 // form processing if the input field has been set
 if ( isset( $_POST['submit'] ) ) {
+	
+	// define markup for error messages
+	$error_tag = apply_filters( 'wp-contact-form-template_error_tag', 'p' );
 	
 	// output form values for debugging
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG )
@@ -104,6 +109,11 @@ if ( isset( $_POST['submit'] ) ) {
 		if ( $cc ) // check for cc and include sender mail to reply
 			$headers .= 'Reply-To: ' . $email;
 		
+		// Filter hooks for enhance the mail; sorry for long strings ;)
+		$email_to = apply_filters( 'wp-contact-form-template-mail_email_to', $email_to );
+		$subject  = apply_filters( 'wp-contact-form-template-mail_subject', $subject );
+		$body     = apply_filters( 'wp-contact-form-template-mail_body', $body );
+		
 		// send mail via wp mail function
 		wp_mail( $email_to, $subject, $body, $headers );
 		// check for cc and send to sender
@@ -121,38 +131,54 @@ if ( isset( $_POST['submit'] ) ) {
 	}
 
 }
-?>
+
+do_action( 'wp-contact-form-template_form_before' ); ?>
 
 <form action="<?php the_permalink(); ?>" method="post">
 	<fieldset>
 		
-		<?php
-		if ( isset( $spam_error ) ) echo '<p class="alert">' . $spam_error . '</p>';
-		if ( isset( $email_sent ) ) echo '<p class="alert">' . __( 'Thank you for leaving a message.', $text_domain_string ) . '</p>';
-		?>
+		<?php do_action( 'wp-contact-form-template_form_top' );
+		
+		if ( isset( $spam_error ) )
+			echo apply_filters( 'wp-contact-form-template_spam_message', '<' . $error_tag . ' class="alert">' . $spam_error . '</' . $error_tag . '>' );
+		if ( isset( $email_sent ) )
+			echo apply_filters( 'wp-contact-form-template_thanks_message', '<' . $error_tag . ' class="alert">' . __( 'Thank you for leaving a message.', $text_domain_string ) . '</' . $error_tag . '>' );
+		
+		do_action( 'wp-contact-form-template_form_before_fields' ); ?>
 		
 		<div class="field">
 			<label for="name">
 			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
 			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
-			<?php if ( isset( $from_error ) ) echo '<p class="alert">' . $from_error . '</p>'; ?>
-		</div>	
+			<?php
+			if ( isset( $from_error ) )
+				echo '<' . $error_tag . ' class="alert">' . $from_error . '</' . $error_tag . '>';
+			?>
+		</div>
 		
 		<div class="field">
 			<label for="email">
 				<?php _e( 'E-mail address', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
 			<input type="text" placeholder="<?php _e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) ) echo $email; ?>" />
-			<?php if ( isset( $email_error ) ) echo '<p class="alert">' . $email_error . '</p>'; ?>
+			<?php
+			if ( isset( $email_error ) )
+				echo '<' . $error_tag . ' class="alert">' . $email_error . '</' . $error_tag . '>';
+			?>
 		</div>
+		
+		<?php do_action( 'wp-contact-form-template_form_after_fields' ); ?>
 		
 		<div class="field">
 			<label for="text">
 				<?php _e( 'Message', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
 			<textarea id="text" name="text" placeholder="<?php _e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) ) echo $message; ?></textarea>
-			<?php if ( isset( $message_error ) ) echo '<p class="alert">' . $message_error . '</p>'; ?>
+			<?php
+			if ( isset( $message_error ) )
+				echo '<' . $error_tag . ' class="alert">' . $message_error . '</' . $error_tag . '>';
+			?>
 		</div>
 		
 		<div class="field">
@@ -169,7 +195,13 @@ if ( isset( $_POST['submit'] ) ) {
 			<input name="spamcheck" class="spamcheck" type="text" />
 		</div>
 		
-		<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
-	
+		<p class="form-submit">
+			<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
+		</p>
+		
+		<?php do_action( 'wp-contact-form-template_form' ); ?>
+		
 	</fieldset>
 </form>
+
+<?php do_action( 'wp-contact-form-template_form_after' ); ?>

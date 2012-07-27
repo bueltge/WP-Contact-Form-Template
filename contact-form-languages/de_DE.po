@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Twenty Eleven v1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-07-25 07:17:42+0000\n"
-"Last-Translator: admin <frank@bueltge.de>\n"
+"PO-Revision-Date: 2012-07-27 08:48+0100\n"
+"Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,121 +13,120 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
-#: contact-form.php:34
 #@ twentyeleven
+#: contact-form.php:34
 msgid "Spammer? The spam protection field needs to be empty."
 msgstr "Spammer? Das Spamschutzfeld muss leer sein."
 
-#: contact-form.php:40
 #@ twentyeleven
+#: contact-form.php:40
 msgid "Please enter your name."
 msgstr "Bitte hinterlege einen Namen."
 
+#@ twentyeleven
 #: contact-form.php:46
-#@ twentyeleven
 msgid "Please enter your e-mail adress."
-msgstr "Bitte hiterlege eine E-Mail Adresse."
+msgstr "Bitte hinterlege eine E-Mail Adresse."
 
-#: contact-form.php:52
 #@ twentyeleven
+#: contact-form.php:52
 msgid "Please enter a valid e-mail adress."
 msgstr "Bitte hinterlege eine valide E-Mail Adresse."
 
-#: contact-form.php:57
 #@ twentyeleven
+#: contact-form.php:57
 msgid "Please enter a message."
 msgstr "Bitte hinterlege eine Mitteilung."
 
-#: contact-form.php:89
 #@ twentyeleven
+#: contact-form.php:89
 msgid "Contact request from"
 msgstr "Kontakt Formular"
 
-#: contact-form.php:90
 #@ twentyeleven
+#: contact-form.php:90
 msgid "Name:"
 msgstr "Name:"
 
-#: contact-form.php:91
 #@ twentyeleven
+#: contact-form.php:91
 msgid "E-mail:"
 msgstr "E-Mail:"
 
-#: contact-form.php:92
 #@ twentyeleven
+#: contact-form.php:92
 msgid "IP:"
 msgstr "IP:"
 
-#: contact-form.php:93
 #@ twentyeleven
+#: contact-form.php:93
 msgid "Message:"
 msgstr "Mitteilung:"
 
-#: contact-form.php:102
 #@ twentyeleven
+#: contact-form.php:102
 msgid "CC:"
 msgstr "CC:"
 
-#: contact-form.php:120
 #@ twentyeleven
+#: contact-form.php:120
 msgid "Thank you for leaving a message."
 msgstr "Vielen Dank für die Mitteilung."
 
-#: contact-form.php:125
 #@ twentyeleven
+#: contact-form.php:125
 msgid "Name"
 msgstr "Name"
 
+#@ twentyeleven
 #: contact-form.php:125
 #: contact-form.php:133
 #: contact-form.php:141
-#@ twentyeleven
 msgid "*required"
 msgstr "*notwendig"
 
-#: contact-form.php:127
 #@ twentyeleven
+#: contact-form.php:127
 msgid "Your name"
 msgstr "Dein Name"
 
-#: contact-form.php:133
 #@ twentyeleven
+#: contact-form.php:133
 msgid "E-mail address"
 msgstr "E-Mail Adresse"
 
-#: contact-form.php:135
 #@ twentyeleven
+#: contact-form.php:135
 msgid "john@doe.com"
 msgstr "max@mustermann.de"
 
-#: contact-form.php:141
 #@ twentyeleven
+#: contact-form.php:141
 msgid "Message"
 msgstr "Mitteilung"
 
-#: contact-form.php:143
 #@ twentyeleven
+#: contact-form.php:143
 msgid "Your message &#x0085;"
 msgstr "Deine Mitteilung &#x0085;"
 
-#: contact-form.php:150
 #@ twentyeleven
+#: contact-form.php:150
 msgid "Receive a copy of this message?"
 msgstr "Kopie dieser Mitteilung erhalten?"
 
-#: contact-form.php:156
 #@ twentyeleven
+#: contact-form.php:156
 msgid "Spam protection"
 msgstr "Spamschutz"
 
-#: contact-form.php:161
 #@ twentyeleven
+#: contact-form.php:161
 msgid "Send e-mail &rarr;"
 msgstr "Sende die E-Mail &rarr;"
 
