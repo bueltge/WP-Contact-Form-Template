@@ -7,7 +7,7 @@
  * See the action and filter hooks for include or change output for your requirements
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  07/27/2012
+ * @version  09/15/2012
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -37,6 +37,7 @@ if ( isset( $_POST['submit'] ) ) {
 	$spam    = filter_var( trim( $_POST['spamcheck'] ), FILTER_SANITIZE_STRING);
 	$from    = filter_var( trim( strip_tags( $_POST['from'] ) ), FILTER_SANITIZE_STRING);
 	$email   = trim( $_POST['email'] );
+	$subject = filter_var( trim( $_POST['subject'] ), FILTER_SANITIZE_STRING);
 	$message = filter_var( trim( $_POST['text'] ), FILTER_SANITIZE_STRING);
 	if ( isset( $_POST['cc'] ) )
 		$cc    = intval( $_POST['cc'] );
@@ -65,6 +66,11 @@ if ( isset( $_POST['submit'] ) ) {
 		) ) {
 		$email_error = __( 'Please enter a valid e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
+	}
+	
+	if ( empty( $subject ) ) {
+		$subject_error = __( 'Please enter a subject.', $text_domain_string );
+		$has_error     = TRUE;
 	}
 	
 	if ( empty( $message ) ) {
@@ -100,11 +106,11 @@ if ( isset( $_POST['submit'] ) ) {
 		
 		// use mail adress from WP Admin
 		$email_to = get_option( 'admin_email' );
-		$subject  = __( 'Contact request from', $text_domain_string ) . ' ' . $from;
-		$body     = __( 'Name:', $text_domain_string ) . ' ' . $from . "\n" . 
+		$subject  = $subject . ' ' . __( 'via Contact request from', $text_domain_string ) . ' ' . $from;
+		$body     = __( 'Message:', $text_domain_string ) . ' ' . $message . "\n\n" .
+		            __( 'Name:', $text_domain_string ) . ' ' . $from . "\n" . 
 		            __( 'E-mail:', $text_domain_string ) . ' ' . $email . "\n" . 
-		            __( 'IP:', $text_domain_string ) . ' ' . $ip_addr . "\n\n" . 
-		            __( 'Message:', $text_domain_string ) . ' ' . $message;
+		            __( 'IP:', $text_domain_string ) . ' ' . $ip_addr . "\n";
 		$headers  = 'From: ' . $from . ' <' . $email . '>' . "\r\n";
 		if ( $cc ) // check for cc and include sender mail to reply
 			$headers .= 'Reply-To: ' . $email;
@@ -165,6 +171,17 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<?php
 			if ( isset( $email_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $email_error . '</' . $error_tag . '>';
+			?>
+		</div>
+		
+		<div class="field">
+			<label for="subject">
+				<?php _e( 'Subject', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
+			</label>
+			<input type="text" placeholder="<?php _e( 'Question', $text_domain_string ); ?>" id="subject" name="subject" value="<?php if ( isset( $subject ) ) echo $subject; ?>" />
+			<?php
+			if ( isset( $subject_error ) )
+				echo '<' . $error_tag . ' class="alert">' . $subject_error . '</' . $error_tag . '>';
 			?>
 		</div>
 		
