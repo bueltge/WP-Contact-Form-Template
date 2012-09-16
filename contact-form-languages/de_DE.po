@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Eleven v1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-07-27 08:48+0100\n"
+"POT-Creation-Date: 2012-09-16 12:11+0100\n"
+"PO-Revision-Date: 2012-09-16 12:12+0100\n"
 "Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,115 +19,129 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#@ twentyeleven
-#: contact-form.php:34
+# @ twentyeleven
+#: contact-form.php:49
 msgid "Spammer? The spam protection field needs to be empty."
 msgstr "Spammer? Das Spamschutzfeld muss leer sein."
 
-#@ twentyeleven
-#: contact-form.php:40
+# @ twentyeleven
+#: contact-form.php:55
 msgid "Please enter your name."
 msgstr "Bitte hinterlege einen Namen."
 
-#@ twentyeleven
-#: contact-form.php:46
+# @ twentyeleven
+#: contact-form.php:61
 msgid "Please enter your e-mail adress."
 msgstr "Bitte hinterlege eine E-Mail Adresse."
 
-#@ twentyeleven
-#: contact-form.php:52
+# @ twentyeleven
+#: contact-form.php:67
 msgid "Please enter a valid e-mail adress."
 msgstr "Bitte hinterlege eine valide E-Mail Adresse."
 
-#@ twentyeleven
-#: contact-form.php:57
+# @ twentyeleven
+#: contact-form.php:72
+msgid "Please enter a subject."
+msgstr "Bitte hinterlege einen Betreff."
+
+# @ twentyeleven
+#: contact-form.php:77
 msgid "Please enter a message."
 msgstr "Bitte hinterlege eine Mitteilung."
 
-#@ twentyeleven
-#: contact-form.php:89
-msgid "Contact request from"
-msgstr "Kontakt Formular"
+# @ twentyeleven
+#: contact-form.php:109
+msgid "via Contact request from"
+msgstr "via Kontakt Formular"
 
-#@ twentyeleven
-#: contact-form.php:90
-msgid "Name:"
-msgstr "Name:"
-
-#@ twentyeleven
-#: contact-form.php:91
-msgid "E-mail:"
-msgstr "E-Mail:"
-
-#@ twentyeleven
-#: contact-form.php:92
-msgid "IP:"
-msgstr "IP:"
-
-#@ twentyeleven
-#: contact-form.php:93
+# @ twentyeleven
+#: contact-form.php:110
 msgid "Message:"
 msgstr "Mitteilung:"
 
-#@ twentyeleven
-#: contact-form.php:102
+# @ twentyeleven
+#: contact-form.php:111
+msgid "Name:"
+msgstr "Name:"
+
+# @ twentyeleven
+#: contact-form.php:112
+msgid "E-mail:"
+msgstr "E-Mail:"
+
+# @ twentyeleven
+#: contact-form.php:113
+msgid "IP:"
+msgstr "IP:"
+
+# @ twentyeleven
+#: contact-form.php:129
 msgid "CC:"
 msgstr "CC:"
 
-#@ twentyeleven
-#: contact-form.php:120
+# @ twentyeleven
+#: contact-form.php:151
 msgid "Thank you for leaving a message."
 msgstr "Vielen Dank für die Mitteilung."
 
-#@ twentyeleven
-#: contact-form.php:125
+# @ twentyeleven
+#: contact-form.php:157
 msgid "Name"
 msgstr "Name"
 
-#@ twentyeleven
-#: contact-form.php:125
-#: contact-form.php:133
-#: contact-form.php:141
+# @ twentyeleven
+#: contact-form.php:157
+#: contact-form.php:168
+#: contact-form.php:179
+#: contact-form.php:192
 msgid "*required"
 msgstr "*notwendig"
 
-#@ twentyeleven
-#: contact-form.php:127
+# @ twentyeleven
+#: contact-form.php:159
 msgid "Your name"
 msgstr "Dein Name"
 
-#@ twentyeleven
-#: contact-form.php:133
+# @ twentyeleven
+#: contact-form.php:168
 msgid "E-mail address"
 msgstr "E-Mail Adresse"
 
-#@ twentyeleven
-#: contact-form.php:135
+# @ twentyeleven
+#: contact-form.php:170
 msgid "john@doe.com"
 msgstr "max@mustermann.de"
 
-#@ twentyeleven
-#: contact-form.php:141
+#: contact-form.php:179
+msgid "Subject"
+msgstr ""
+
+#: contact-form.php:181
+msgid "Question"
+msgstr ""
+
+# @ twentyeleven
+#: contact-form.php:192
 msgid "Message"
 msgstr "Mitteilung"
 
-#@ twentyeleven
-#: contact-form.php:143
+# @ twentyeleven
+#: contact-form.php:194
 msgid "Your message &#x0085;"
 msgstr "Deine Mitteilung &#x0085;"
 
-#@ twentyeleven
-#: contact-form.php:150
+# @ twentyeleven
+#: contact-form.php:204
 msgid "Receive a copy of this message?"
 msgstr "Kopie dieser Mitteilung erhalten?"
 
-#@ twentyeleven
-#: contact-form.php:156
+# @ twentyeleven
+#: contact-form.php:210
 msgid "Spam protection"
 msgstr "Spamschutz"
 
-#@ twentyeleven
-#: contact-form.php:161
+# @ twentyeleven
+#: contact-form.php:216
 msgid "Send e-mail &rarr;"
 msgstr "Sende die E-Mail &rarr;"
 
