@@ -7,7 +7,7 @@
  * See the action and filter hooks for include or change output for your requirements
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  09/15/2012
+ * @version  09/21/2012
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -38,7 +38,10 @@ if ( isset( $_POST['submit'] ) ) {
 	$from    = filter_var( trim( strip_tags( $_POST['from'] ) ), FILTER_SANITIZE_STRING);
 	$email   = trim( $_POST['email'] );
 	$subject = filter_var( trim( $_POST['subject'] ), FILTER_SANITIZE_STRING);
-	$message = filter_var( trim( $_POST['text'] ), FILTER_SANITIZE_STRING);
+	//$message = filter_var( trim( $_POST['text'] ), FILTER_SANITIZE_STRING);
+	// Allow html in message
+	$message = wp_kses_post( $_POST['text'] );
+	
 	if ( isset( $_POST['cc'] ) )
 		$cc    = intval( $_POST['cc'] );
 	else
