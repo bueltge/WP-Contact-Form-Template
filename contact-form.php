@@ -57,13 +57,13 @@ if ( isset( $_POST['submit'] ) ) {
 	}
 	
 	// check for mail and filter the mail
+	// alternative to filter_var a regex via preg_match( $filter, $email )
+	// $filter = "/^([a-z0-9äöü]+[-_\\.a-z0-9äöü]*)@[a-z0-9äöü]+([-_\.]?[a-z0-9äöü])+\.[a-z]{2,4}$/i"
+	// $filter = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i"
 	if ( empty( $email ) ) {
 		$email_error = __( 'Please enter your e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
-	} else if ( ! preg_match(
-			"/^([a-z0-9äöü]+[-_\\.a-z0-9äöü]*)@[a-z0-9äöü]+([-_\.]?[a-z0-9äöü])+\.[a-z]{2,4}$/i",
-			$email
-		) ) {
+	} else if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
 		$email_error = __( 'Please enter a valid e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
 	}
