@@ -153,7 +153,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		do_action( 'wp-contact-form-template_form_before_fields' ); ?>
 		
 		<div class="field">
-			<label for="name">
+			<label for="from">
 			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
 			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
