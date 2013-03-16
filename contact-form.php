@@ -25,7 +25,7 @@ $text_domain_string = 'contact-form';
 load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact-form-languages' );
 
 // form processing if the input field has been set
-if ( isset( $_POST['submit'] ) ) {
+if ( isset( $_POST['submit']) && wp_verify_nonce( $_POST['contact_form_nonce'],'form_submit' ) ) {
 	
 	// define markup for error messages
 	$error_tag = apply_filters( 'wp-contact-form-template_error_tag', 'p' );
@@ -218,7 +218,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		<p class="form-submit">
 			<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
 		</p>
-		
+		<?php wp_nonce_field( 'form_submit', 'contact_form_nonce' ) ?>
 		<?php do_action( 'wp-contact-form-template_form' ); ?>
 		
 	</fieldset>
