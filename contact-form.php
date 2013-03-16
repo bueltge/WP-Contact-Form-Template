@@ -67,7 +67,7 @@ if ( isset( $_POST['submit'] ) ) {
 		$email_error = __( 'Please enter your e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
 	} else if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-		$email_error = __( 'Please enter a valid e-mail adress.', $text_domain_string );
+		$email_error = __( 'Please enter a valid e-mail address.', $text_domain_string );
 		$has_error   = TRUE;
 	}
 	
@@ -107,7 +107,7 @@ if ( isset( $_POST['submit'] ) ) {
 		}
 		$ip_addr = filter_var( $ip_addr, FILTER_VALIDATE_IP );
 		
-		// use mail adress from WP Admin
+		// use mail address from WP Admin
 		$email_to = get_option( 'admin_email' );
 		$subject  = $subject . ' ' . __( 'via Contact request from', $text_domain_string ) . ' ' . $from;
 		$body     = __( 'Message:', $text_domain_string ) . ' ' . $message . "\n\n" .
