@@ -25,7 +25,7 @@ $text_domain_string = 'contact-form';
 load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact-form-languages' );
 
 // form processing if the input field has been set
-if ( isset( $_POST['submit'] ) ) {
+if ( isset( $_POST['submit']) && wp_verify_nonce( $_POST['contact_form_nonce'],'form_submit' ) ) {
 	
 	// define markup for error messages
 	$error_tag = apply_filters( 'wp-contact-form-template_error_tag', 'p' );
@@ -67,7 +67,7 @@ if ( isset( $_POST['submit'] ) ) {
 		$email_error = __( 'Please enter your e-mail adress.', $text_domain_string );
 		$has_error   = TRUE;
 	} else if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-		$email_error = __( 'Please enter a valid e-mail adress.', $text_domain_string );
+		$email_error = __( 'Please enter a valid e-mail address.', $text_domain_string );
 		$has_error   = TRUE;
 	}
 	
@@ -107,7 +107,7 @@ if ( isset( $_POST['submit'] ) ) {
 		}
 		$ip_addr = filter_var( $ip_addr, FILTER_VALIDATE_IP );
 		
-		// use mail adress from WP Admin
+		// use mail address from WP Admin
 		$email_to = get_option( 'admin_email' );
 		$subject  = $subject . ' ' . __( 'via Contact request from', $text_domain_string ) . ' ' . $from;
 		$body     = __( 'Message:', $text_domain_string ) . ' ' . $message . "\n\n" .
@@ -218,7 +218,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		<p class="form-submit">
 			<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
 		</p>
-		
+		<?php wp_nonce_field( 'form_submit', 'contact_form_nonce' ) ?>
 		<?php do_action( 'wp-contact-form-template_form' ); ?>
 		
 	</fieldset>
