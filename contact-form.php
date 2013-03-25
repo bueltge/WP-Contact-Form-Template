@@ -159,7 +159,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="from">
 			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" id="from" name="from" placeholder="<?php _e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo $from; ?>" />
+			<input type="text" id="from" name="from" placeholder="<?php esc_attr_e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) ) echo esc_attr( $from ); ?>" />
 			<?php
 			if ( isset( $from_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $from_error . '</' . $error_tag . '>';
@@ -170,7 +170,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="email">
 				<?php _e( 'E-mail address', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" placeholder="<?php _e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) ) echo $email; ?>" />
+			<input type="text" placeholder="<?php esc_attr_e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) ) echo esc_attr( $email ); ?>" />
 			<?php
 			if ( isset( $email_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $email_error . '</' . $error_tag . '>';
@@ -181,7 +181,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="subject">
 				<?php _e( 'Subject', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" placeholder="<?php _e( 'Question', $text_domain_string ); ?>" id="subject" name="subject" value="<?php if ( isset( $subject ) ) echo $subject; ?>" />
+			<input type="text" placeholder="<?php _e( 'Question', $text_domain_string ); ?>" id="subject" name="subject" value="<?php if ( isset( $subject ) ) echo esc_attr( $subject ); ?>" />
 			<?php
 			if ( isset( $subject_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $subject_error . '</' . $error_tag . '>';
@@ -194,7 +194,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="text">
 				<?php _e( 'Message', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<textarea id="text" name="text" placeholder="<?php _e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) ) echo $message; ?></textarea>
+			<textarea id="text" name="text" placeholder="<?php esc_attr_e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) ) echo esc_textarea( $message ); ?></textarea>
 			<?php
 			if ( isset( $message_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $message_error . '</' . $error_tag . '>';
@@ -202,7 +202,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		</div>
 		
 		<div class="field">
-			<input type="checkbox" id="cc" name="cc" value="1" <?php if ( isset( $cc ) ) checked('1', $cc ); ?> />
+			<input type="checkbox" id="cc" name="cc" value="1" <?php if ( isset( $cc ) ) checked('1', intval($cc) ); ?> />
 			<label for="cc" style="display: inline;">
 				<?php _e( 'Receive a copy of this message?', $text_domain_string ); ?>
 			</label>
@@ -216,7 +216,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		</div>
 		
 		<p class="form-submit">
-			<input class="submit" type="submit" name="submit" value="<?php _e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
+			<input class="submit" type="submit" name="submit" value="<?php esc_attr_e( 'Send e-mail &rarr;', $text_domain_string ); ?>" />
 		</p>
 		<?php wp_nonce_field( 'form_submit', 'contact_form_nonce' ) ?>
 		<?php do_action( 'wp-contact-form-template_form' ); ?>
