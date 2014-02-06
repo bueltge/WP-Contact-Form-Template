@@ -7,7 +7,7 @@
  * See the action and filter hooks for include or change output for your requirements
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  09/21/2012
+ * @version  02/06/2014
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -25,14 +25,14 @@ $text_domain_string = 'contact-form';
 load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact-form-languages' );
 
 // form processing if the input field has been set
-if ( isset( $_POST['submit']) && wp_verify_nonce( $_POST['contact_form_nonce'],'form_submit' ) ) {
+if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['contact_form_nonce'],'form_submit' ) ) {
 	
 	// define markup for error messages
 	$error_tag = apply_filters( 'wp-contact-form-template_error_tag', 'p' );
 	
 	// output form values for debugging
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG )
-		var_dump($_POST);
+		var_dump( $_POST );
 	
 	$spam    = filter_var( trim( $_POST['spamcheck'] ), FILTER_SANITIZE_STRING);
 	$from    = filter_var( trim( strip_tags( $_POST['from'] ) ), FILTER_SANITIZE_STRING);
@@ -43,9 +43,9 @@ if ( isset( $_POST['submit']) && wp_verify_nonce( $_POST['contact_form_nonce'],'
 	$message = wp_kses_post( $_POST['text'] );
 	
 	if ( isset( $_POST['cc'] ) )
-		$cc    = intval( $_POST['cc'] );
+		$cc = intval( $_POST['cc'] );
 	else
-		$cc    = FALSE;
+		$cc = FALSE;
 	
 	// check for spam input field
 	if ( ! empty( $spam ) ) {
@@ -86,12 +86,12 @@ if ( isset( $_POST['submit']) && wp_verify_nonce( $_POST['contact_form_nonce'],'
 		// get IP
 		if ( isset( $_SERVER ) ) {
 			
-			if ( isset( $_SERVER["HTTP_X_FORWARDED_FOR"] ) ) {
-				$ip_addr = $_SERVER["HTTP_X_FORWARDED_FOR"];
-			} elseif ( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
-				$ip_addr = $_SERVER["HTTP_CLIENT_IP"];
+			if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+				$ip_addr = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			} elseif ( isset( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+				$ip_addr = $_SERVER['HTTP_CLIENT_IP'];
 			} else {
-				$ip_addr = $_SERVER["REMOTE_ADDR"];
+				$ip_addr = $_SERVER['REMOTE_ADDR'];
 			}
 			
 		} else {
@@ -159,7 +159,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="from">
 			<?php _e( 'Name', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" id="from" name="from" placeholder="<?php esc_attr_e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) && !isset( $email_sent ) ) echo esc_attr( $from ); ?>" />
+			<input type="text" id="from" name="from" placeholder="<?php esc_attr_e( 'Your name', $text_domain_string ); ?>" value="<?php if ( isset( $from ) && ! isset( $email_sent ) ) echo esc_attr( $from ); ?>" />
 			<?php
 			if ( isset( $from_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $from_error . '</' . $error_tag . '>';
@@ -170,7 +170,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="email">
 				<?php _e( 'E-mail address', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" placeholder="<?php esc_attr_e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) && !isset( $email_sent ) ) echo esc_attr( $email ); ?>" />
+			<input type="text" placeholder="<?php esc_attr_e( 'john@doe.com', $text_domain_string ); ?>" id="email" name="email" value="<?php if ( isset( $email ) && ! isset( $email_sent ) ) echo esc_attr( $email ); ?>" />
 			<?php
 			if ( isset( $email_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $email_error . '</' . $error_tag . '>';
@@ -181,7 +181,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="subject">
 				<?php _e( 'Subject', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<input type="text" placeholder="<?php _e( 'Question', $text_domain_string ); ?>" id="subject" name="subject" value="<?php if ( isset( $subject ) && !isset( $email_sent ) ) echo esc_attr( $subject ); ?>" />
+			<input type="text" placeholder="<?php _e( 'Question', $text_domain_string ); ?>" id="subject" name="subject" value="<?php if ( isset( $subject ) && ! isset( $email_sent ) ) echo esc_attr( $subject ); ?>" />
 			<?php
 			if ( isset( $subject_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $subject_error . '</' . $error_tag . '>';
@@ -194,7 +194,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="text">
 				<?php _e( 'Message', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<textarea id="text" name="text" placeholder="<?php esc_attr_e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message && !isset( $email_sent ) ) ) echo esc_textarea( $message ); ?></textarea>
+			<textarea id="text" name="text" placeholder="<?php esc_attr_e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message && ! isset( $email_sent ) ) ) echo esc_textarea( $message ); ?></textarea>
 			<?php
 			if ( isset( $message_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $message_error . '</' . $error_tag . '>';
@@ -202,7 +202,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 		</div>
 		
 		<div class="field">
-			<input type="checkbox" id="cc" name="cc" value="1" <?php if ( isset( $cc ) ) checked('1', intval($cc) ); ?> />
+			<input type="checkbox" id="cc" name="cc" value="1" <?php if ( isset( $cc ) ) checked( '1', intval($cc) ); ?> />
 			<label for="cc" style="display: inline;">
 				<?php _e( 'Receive a copy of this message?', $text_domain_string ); ?>
 			</label>
