@@ -194,7 +194,7 @@ do_action( 'wp-contact-form-template_form_before' ); ?>
 			<label for="text">
 				<?php _e( 'Message', $text_domain_string ); ?> <small class="help-inline"><?php _e( '*required', $text_domain_string ); ?></small>
 			</label>
-			<textarea id="text" name="text" placeholder="<?php esc_attr_e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message && ! isset( $email_sent ) ) ) echo esc_textarea( $message ); ?></textarea>
+			<textarea id="text" name="text" placeholder="<?php esc_attr_e( 'Your message &#x0085;', $text_domain_string ); ?>"><?php if ( isset( $message ) && ! isset( $email_sent ) ) echo esc_textarea( $message ); ?></textarea>
 			<?php
 			if ( isset( $message_error ) )
 				echo '<' . $error_tag . ' class="alert">' . $message_error . '</' . $error_tag . '>';
