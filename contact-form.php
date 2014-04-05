@@ -7,7 +7,7 @@
  * See the action and filter hooks for include or change output for your requirements
  * 
  * @author   Frank Bueltge <frank@bueltge.de>
- * @version  02/06/2014
+ * @version  04/04/2014
  * 
  * 
  * -----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ $text_domain_string = 'contact-form';
 /* Make the Contact Form Template available for translation.
  * Translations can be added to the /contact-form-languages/ directory.
  */
-load_theme_textdomain( $text_domain_string, get_template_directory() . '/contact-form-languages' );
+load_theme_textdomain( $text_domain_string, get_stylesheet_directory() . '/contact-form-languages' );
 
 // form processing if the input field has been set
 if ( isset( $_POST['submit'] ) && wp_verify_nonce( $_POST['contact_form_nonce'], 'form_submit' ) ) {
