@@ -1,6 +1,6 @@
 # WP Contact Form Template
 
-A simple contact form template for use inside a theme in WordPress
+A simple contact form template for usage inside a theme in WordPress
 
 ![Screenshot on my private blog](https://github.com/bueltge/WP-Contact-Form-Template/raw/master/screenshot-1.png)
 
@@ -16,9 +16,7 @@ In your page template called “Contact” or whatever inlcude the form template
 	<?php get_template_part( 'contact', 'form' ); ?>
 
 ## Examples
- * Live: See the usage on my private site: [http://bueltge.de/kontakt/](http://bueltge.de/kontakt/)
-
- * Code: See also the page template inside this repo for WordPress 'TwentyTen' template:
+  * Code: See the page template inside this repo for the default WordPress 'TwentyTen' theme:
 
 	`https://github.com/bueltge/WP-Contact-Form-Template/blob/master/twentyeleven/page-contact.php`
 
@@ -34,11 +32,11 @@ The string was set on start of the form template `contact-form.php`.
 
 ## Other Notes
 ### Requirements
- * PHP 5.2, tested on PHP 5.3
+ * PHP 5.2
  * WordPress ;)
 
 ### Contact & Feedback
-This template is designed and developed by me ([Frank Bültge](http://bueltge.de))
+This template is designed and developed by me ([Frank Bültge](https://bueltge.de))
 
 Please let me know if you like the plugin or you hate it or whatever ... Please fork it, add an issue for ideas and bugs.
 
@@ -46,4 +44,4 @@ Please let me know if you like the plugin or you hate it or whatever ... Please 
 I'm German and my English might be gruesome here and there. So please be patient with me and let me know of typos or grammatical farts. Thanks
 
 ### License
-Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a small donation for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
+Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog.
